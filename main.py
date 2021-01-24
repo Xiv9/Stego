@@ -24,26 +24,30 @@ def unitoascii(message):
 			enc = (x+5)/(2*5)*(3+2)/(12-5)
 			encode.append(enc)
 
-		print(f"{Fore.RED}[Encoded]: " + " | ".join([str(x) for x in encode]))
+		print(f"{Fore.GREEN}[Encoded RGB]: {Fore.YELLOW}[" + ", ".join([str(x) for x in encode]) + "]")
 
+		message = []
 		decode = []
 		for x in encode:
 			dec = x*14-5
 			a = chr(math.trunc(dec))
-			decode.append(a)
-		
-		for x in decode:
-			print(f"{Fore.GREEN}[Decoded]: " + "".join(decode))
+			message.append(a)
+			b = math.trunc(dec)
+			decode.append(b)
+
+		print(f"{Fore.GREEN}[Decoded RGB]: {Fore.YELLOW}[" + ", ".join([str(x) for x in decode]) + "]")
+
+		for x in message:
+			print(f"{Fore.GREEN}[Message]: {Fore.YELLOW}" + "".join(message))
 			break
 	except:
 		pass
 
 def image(image):
 	try:
-		image = Image.open(image)
-		pixels = list(image.getdata())
+		pixels = list(lol.getdata())
 		array = [str(x) for x in pixels]
-		with open("rgb.txt", "w") as file:
+		with open("rgb.png", "w") as file:
 			for line in array:
 				file.write(line)
 			file.close()
